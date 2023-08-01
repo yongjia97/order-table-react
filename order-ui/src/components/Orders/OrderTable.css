@@ -1,0 +1,21 @@
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .order-table th,
+  .order-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .order-table-header th {
+    background-color: #809bce;
+    font-weight: bold;
+  }
+  
+  .order-table tr:hover {
+    background-color: #e8f89f;
+  }

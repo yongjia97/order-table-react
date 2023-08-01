@@ -1,0 +1,36 @@
+.order-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  
+}
+
+.left-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.right-section {
+  flex: 1;
+}
+
+.line-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.line-items-table th,
+.line-items-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.order-image {
+  max-width: 100%;
+  height: auto;
+}
+.order-details-header th {
+  background-color: #c24d6a;
+  font-weight: bold;
+}
