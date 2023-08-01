@@ -61,5 +61,5 @@ VALUES
 ### Run backend in local
 1. Change to the project directory 
   # cd order-table-react/server
-2. Install dependencies
+2. Run the server
   #  npm start
