@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Getting Started with Order Table App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### prerequisities
+1. Install node.js
 
-## Available Scripts
+### installation
+1. Clone the repository to your local machine from my git repo:
+# https://github.com/yongjia97/order-table-react.git
+### Run frontend in local
+once cloned to your local machine:
+1. Change to the project directory
+   # cd order-table-react/order-ui
+2. Install dependencies
+   #  npm install
+3. Start the development server
+   #  npm start
 
-In the project directory, you can run:
+### Configure mysql connection
+   
+  a. Open the server.js file in the server folder.
+  b. Update the MySQL connection configuration with your database credentials (host, user, password, and database name).
 
-### `npm start`
+### Create table in your database 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+CREATE TABLE Orders (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  Category VARCHAR(50),
+  SubCategory VARCHAR(50),
+  Segment VARCHAR(50),
+  ProductName VARCHAR(255),
+  OrderDate DATE,
+  Region VARCHAR(50),
+  Profit DECIMAL(10,2),
+  Sales DECIMAL(10,2),
+  Image BLOB
+);
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+INSERT INTO Orders (Category, SubCategory, Segment, ProductName, OrderDate, Region, Profit, Sales, Image)
+VALUES
+('Furniture', 'Tables', 'Corporate', 'Bevis Round Conference Table Top & Single Column Base', '2019-07-13', 'West', 4.00, 351.00, 'orderid-1.jpeg'),
+('Furniture', 'Furnishings', 'Home Office', 'Deflect-o Glass Clear Studded Chair Mats', '2020-09-01', 'East', 27.00, 124.00, NULL),
+('Furniture', 'Chairs', 'Home Office', 'Global Value Steno Chair, Gray', '2020-09-01', 'East', 15.00, 61.00, NULL),
+('Furniture', 'Furnishings', 'Corporate', 'GE General Purpose, ExtrImageordersa Long Life, Showcase & Floodlight Incandescent Bulbs', '2021-12-23', 'Central', -1.00, 2.00, NULL),
+('Furniture', 'Tables', 'Corporate', 'Bretford CR4500 Series Slim Rectangular Table', '2021-12-13', 'West', 42.00, 1114.00, NULL),
+('Furniture', 'Furnishings', 'Consumer', 'Eldon ClusterMat Chair Mat with Cordless Antistatic Protection', '2020-07-09', 'East', 20.00, 182.00, NULL);
 
-### `npm test`
+CREATE TABLE OrderLineItem (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  OrderID INT,
+  Item VARCHAR(100),
+  Profit DECIMAL(10,2),
+  Sales DECIMAL(10,2),
+  FOREIGN KEY (OrderID) REFERENCES Orders (ID)
+);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+INSERT INTO OrderLineItem (OrderID, Item, Profit, Sales)
+VALUES
+(1, 'Table A', 3.00, 100.00),
+(1, 'Table B', 1.00, 151.00);
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Run backend in local
+1. Change to the project directory 
+  # cd order-table-react/server
+2. Install dependencies
+  #  npm start
